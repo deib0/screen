@@ -1,12 +1,14 @@
 import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
+import { createEchartsOptions } from '../shared/create-echarts-options'; 
+import { px } from '../shared/px';
 
 export const Chart2 = () => {
 const px = (n) => n / 2420 * (window as any).pageWidth;
   const divRef = useRef(null);
   useEffect(() => {
     var myChart = echarts.init(divRef.current);
-    myChart.setOption({
+    myChart.setOption(createEchartsOptions({
       grid: {
         x: px(100),
         y: px(40),
@@ -39,7 +41,7 @@ const px = (n) => n / 2420 * (window as any).pageWidth;
           data: [ 681807,19325, 23438, 31000, 121594, 134141, 681807, 134141]
         }
       ]
-    });
+    }));
   }, []);
 
   return (

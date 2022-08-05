@@ -1,11 +1,13 @@
 import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
+import { createEchartsOptions } from '../shared/create-echarts-options'; 
+import { px } from '../shared/px';
+
 export const Chart1 = () => {
-  const px = (n) => n / 2420 * (window as any).pageWidth;
   const divRef = useRef(null);
   useEffect(() => {
     var myChart = echarts.init(divRef.current);
-    myChart.setOption({
+    myChart.setOption(createEchartsOptions({
       textStyle: {
         fontSize: px(12),
         color: '#79839E'
@@ -51,7 +53,7 @@ export const Chart1 = () => {
         type: 'bar',
         data: [10, 20, 36, 41, 15, 26, 37, 18, 29]
       }]
-    });
+    }));
   }, []);
   return (
           <div className="bordered chart1">
