@@ -64,6 +64,9 @@
     }
     > .section2 {
       grid-area: box2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     > .section3 {
       grid-area: box3;
@@ -76,7 +79,8 @@
     }
     .管辖统计,
     .破获排名,
-    .发案趋势 {
+    .发案趋势, 
+    .案发时段 {
       height: px(423);
       display: flex;
       flex-direction: column;
@@ -95,22 +99,27 @@
         flex: 1;
         width: 100%;
       }
-      .legend {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        width: 100%;
-        padding: 0 px(20) px(10);
-        > .first, > .second {
-          display: inline-block;
-          width: px(18); height: px(12);
-          background: red; margin: 0 px(10);
-        }
-        .first {
-          background: linear-gradient(90deg, #2034f9 0%, #04a1ff 100%);
-        }
-        .second {
-          background: linear-gradient(90deg, #b92ae8 0%, #6773e7 100%);
+      .发案趋势, .案发时段 {
+        height: px(363);
+      }
+      .破获排名{      
+        .legend {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          width: 100%;
+          padding: 0 px(20) px(10);
+          > .first, > .second {
+            display: inline-block;
+            width: px(18); height: px(12);
+            background: red; margin: 0 px(10);
+          }
+          .first {
+            background: linear-gradient(90deg, #2034f9 0%, #04a1ff 100%);
+          }
+          .second {
+            background: linear-gradient(90deg, #b92ae8 0%, #6773e7 100%);
+          }
         }
       }
     }
