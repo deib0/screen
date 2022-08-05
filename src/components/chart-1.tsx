@@ -33,9 +33,9 @@ export const Chart1 = () => {
       },
       grid: {
         x: px(40),
-        y: px(20),
+        y: px(30),
         x2: px(40),
-        y2: px(70),
+        y2: px(50),
       },
       yAxis: {
         splitLine: {show: false},
