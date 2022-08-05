@@ -1,27 +1,21 @@
 import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
-import { createEchartsOptions } from '../shared/create-echarts-options'; 
-import { px } from '../shared/px';
+import {px} from '../shared/px';
+import {baseEchartOptions} from '../shared/base-echart-options';
+import {createEchartsOptions} from '../shared/create-echarts-options';
 
 export const Chart1 = () => {
   const divRef = useRef(null);
   useEffect(() => {
     var myChart = echarts.init(divRef.current);
     myChart.setOption(createEchartsOptions({
-      textStyle: {
-        fontSize: px(12),
-        color: '#79839E'
-      },
-      title: {show: false},
-      legend: {show: false},
       xAxis: {
-        data: ['城关区', '七里河区', '西固区', '安宁区', '红谷区', '永登区', '臬兰区', '榆中区', '兰州新区'],
+        data: ['兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区'],
         axisTick: {show: false},
         axisLine: {
           lineStyle: {color: '#083B70'}
         },
         axisLabel: {
-          fontSize: px(12),
           formatter(val) {
             if (val.length > 2) {
               const array = val.split('');
@@ -33,20 +27,12 @@ export const Chart1 = () => {
           }
         },
       },
-      grid: {
-        x: px(40),
-        y: px(30),
-        x2: px(40),
-        y2: px(50),
-      },
+
       yAxis: {
         splitLine: {show: false},
         axisLine: {
           show: true,
           lineStyle: {color: '#083B70'}
-        },
-        axisLabel: {
-          fontSize: px(12)
         }
       },
       series: [{
@@ -55,11 +41,13 @@ export const Chart1 = () => {
       }]
     }));
   }, []);
+
   return (
-          <div className="bordered chart1">
-            <h2>案发派出所管辖统计</h2>
-            <div ref={divRef} className="chart">
-            </div>
-          </div>
+    <div className="bordered 管辖统计">
+      <h2>案发派出所管辖统计</h2>
+      <div ref={divRef} className="chart">
+
+      </div>
+    </div>
   );
 };
