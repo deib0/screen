@@ -28,3 +28,10 @@ body {
   height:px(315);
   border: 1px solid #000;
 }
+.home{
+  .header{
+    height: px(99);
+    background: url(../images/header.png);
+    background-size: cover;
+  }
+}
