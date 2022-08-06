@@ -33,7 +33,7 @@ export const Chart2 = () => {
         {name: '新区公安局', 2011: randomGenerator.getSingle(0,10), 2012: randomGenerator.getSingle(0,10)}
       ]
       x(newData);
-    }, 2000);
+    }, 1500);
   }, []);
   const x = (data) => {
     myChart.current.setOption(createEchartsOptions({

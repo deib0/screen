@@ -23,7 +23,7 @@ export const Chart12 = () => {
         {value: 0.08, name: '天水路'},
       ]
       renderChart(newData)
-    },2000)
+    },3000)
     const renderChart=(data)=>{
       myChart.current.setOption(createEchartsOptions({
         xAxis: {show: false},

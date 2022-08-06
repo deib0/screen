@@ -13,7 +13,7 @@ export const Chart7 = () => {
       const n = Math.ceil(randomGenerator.getSingle(0,3))/10
       const newData = [n,1-n]
       renderChart(newData)
-    },2000)
+    },3000)
     const renderChart=(data)=>{
       myChart.current.setOption(createEchartsOptions({
         color: ['#8D70F8', '#33A4FA'],

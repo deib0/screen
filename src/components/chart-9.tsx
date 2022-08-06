@@ -12,7 +12,7 @@ export const Chart9 = () => {
     setInterval(()=>{
       const newData = randomGenerator.getArray(0.08,0.38,3)
       renderChart(newData)
-    },2000)
+    },1500)
     const renderChart=(data)=>{
       myChart.current.setOption(createEchartsOptions({
         color: '#F7A110',

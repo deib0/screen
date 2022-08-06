@@ -11,10 +11,11 @@ export const Chart11 = () => {
   useEffect(() => {
     myChart.current = echarts.init(divRef.current); 
     setInterval(()=>{
-      let n =Math.floor(randomGenerator.getSingle(0,50))*0.01
-      const newData = [n,0.5-n,0.35,0.15]
+      let n1 =Math.floor(randomGenerator.getSingle(0,50))
+      let n2 =100-n1
+      const newData = [n1*0.01,n2*0.01,0.35,0.15]
       renderChart(newData)
-    },4000)
+    },2500)
     const renderChart=(data)=>{
       myChart.current.setOption(createEchartsOptions({
         color: colors,

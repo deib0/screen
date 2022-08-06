@@ -12,7 +12,7 @@ export const Chart4 = () => {
     setInterval(()=>{
       let newData = randomGenerator.getArray(0.13,0.2,13)
       renderChart(newData)
-    },2000)
+    },2500)
     const renderChart=(data)=>{
       myChart.current.setOption(createEchartsOptions({
         xAxis: {

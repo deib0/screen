@@ -11,7 +11,7 @@ export const Chart1 = () => {
     setInterval(()=>{
       let newData = randomGenerator.getArray(0,50,9)
       renderChart(newData)
-    },2000)
+    },1000)
     const renderChart=(data)=>{
       myChart.current.setOption(createEchartsOptions({
         xAxis: {

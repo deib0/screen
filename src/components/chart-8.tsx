@@ -14,7 +14,7 @@ export const Chart8 = () => {
       const n =Math.floor(randomGenerator.getSingle(0,50))*0.01
       const newData = [n,0.5-n,0.35,0.15,0.25]
       renderChart(newData)
-    },2000)
+    },1000)
     const renderChart=(data)=>{
       myChart.current.setOption(createEchartsOptions({
         color: colors,
