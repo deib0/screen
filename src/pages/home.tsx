@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React from 'react';
 import './home.scss';
 import {Chart1} from '../components/chart-1';
 import {Chart2} from '../components/chart-2';
@@ -37,7 +37,23 @@ export const Home = () => {
             </div>
           </div>
         </section>
-        <section className="bordered section5"></section>
+        <section className="section5">
+          <div className="bordered row1 案发类型">
+            <h2>案发类型统计</h2>
+            <div className="charts">
+
+            </div>
+          </div>
+          <div className="bordered row2 案发街道">
+            <h2>案发街道统计</h2>
+            <div className="charts">
+
+            </div>
+          </div>
+          <div className="bordered row3 作案手段">
+            <h2>作案手段分析</h2>
+          </div>
+        </section>
       </main>
       <footer>
         数据统计于：{new Date().toLocaleDateString()}
