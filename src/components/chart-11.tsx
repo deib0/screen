@@ -2,45 +2,55 @@ import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
 import {createEchartsOptions} from '../shared/create-echarts-options';
 import {px} from '../shared/px';
+import { randomGenerator } from './getRandom'; 
 
 export const Chart11 = () => {
   const divRef = useRef(null);
+  const myChart =useRef(null)
   const colors = ['#F46064', '#F38E1C', '#1CDB7C', '#8D70F8', '#33A4FA'];
   useEffect(() => {
-    var myChart = echarts.init(divRef.current);
-    myChart.setOption(createEchartsOptions({
-      color: colors,
-      xAxis: {show: false},
-      yAxis: {show: false},
-      legend: {show: false},
-      series: [
-        {
-          startAngle: -20,
-          type: 'pie',
-          radius: ['25%', '90%'],
-          avoidLabelOverlap: false,
-          label: {
-            show: true, position: 'outside', textStyle: {color: 'white', fontSize: px(20)},
-            distanceToLabelLine: 0,
-            formatter(options) {
-              return options.value * 100 + '%';
-            }
-          },
-          labelLine: {show: true, length: 0},
-          roseType: 'area',
-          itemStyle: {
-            shadowBlur: px(200),
-            shadowColor: 'rgba(0, 0, 0, 0.5)'
-          },
-          data: [
-            {value: 0.36, name: '刑事案件'},
-            {value: 0.20, name: '民事案件'},
-            {value: 0.18, name: '经济案件'},
-            {value: 0.24, name: '其他案件'},
-          ]
-        }
-      ]
-    }));
+    myChart.current = echarts.init(divRef.current); 
+    setInterval(()=>{
+      let n =Math.floor(randomGenerator.getSingle(0,50))*0.01
+      const newData = [n,0.5-n,0.35,0.15]
+      renderChart(newData)
+    },4000)
+    const renderChart=(data)=>{
+      myChart.current.setOption(createEchartsOptions({
+        color: colors,
+        xAxis: {show: false},
+        yAxis: {show: false},
+        legend: {show: false},
+        series: [
+          {
+            startAngle: -20,
+            type: 'pie',
+            radius: ['25%', '90%'],
+            avoidLabelOverlap: false,
+            label: {
+              show: true, position: 'outside', textStyle: {color: 'white', fontSize: px(20)},
+              distanceToLabelLine: 0,
+              formatter(options) {
+                return options.value * 100 + '%';
+              }
+            },
+            labelLine: {show: true, length: 0},
+            roseType: 'area',
+            itemStyle: {
+              shadowBlur: px(200),
+              shadowColor: 'rgba(0, 0, 0, 0.5)'
+            },
+            data: [
+              {value: data[0], name: '刑事案件'},
+              {value: data[1], name: '民事案件'},
+              {value: data[2], name: '经济案件'},
+              {value: data[3], name: '其他案件'},
+            ]
+          }
+        ]
+      }));
+    }
+    renderChart([0.36,0.20,0.18,0.24])
   }, []);
 
   return (

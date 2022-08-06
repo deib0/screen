@@ -11,12 +11,8 @@ export const Chart8 = () => {
   useEffect(() => {
     myChart.current = echarts.init(divRef.current);
     setInterval(()=>{
-      const n1 = Math.ceil(randomGenerator.getSingle(0,1))/10
-      const n2 = Math.ceil(randomGenerator.getSingle(0,2))/10
-      const n3 = Math.ceil(randomGenerator.getSingle(0,3))/10
-      const n4 = Math.ceil(randomGenerator.getSingle(0,4))/10
-      const n5 =1-n1-n2-n3-n4
-      const newData = [n1,n2,n3,n4,n5]
+      const n =Math.floor(randomGenerator.getSingle(0,50))*0.01
+      const newData = [n,0.5-n,0.35,0.15,0.25]
       renderChart(newData)
     },2000)
     const renderChart=(data)=>{
