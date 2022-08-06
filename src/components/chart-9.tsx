@@ -2,12 +2,19 @@ import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
 import {createEchartsOptions} from '../shared/create-echarts-options';
 import {px} from '../shared/px';
+import { randomGenerator } from './getRandom';
 
 export const Chart9 = () => {
   const divRef = useRef(null);
+  const myChart =useRef(null)
   useEffect(() => {
-    var myChart = echarts.init(divRef.current);
-    myChart.setOption(createEchartsOptions({
+    myChart.current = echarts.init(divRef.current);
+    setInterval(()=>{
+      const newData = randomGenerator.getArray(0.08,0.38,3)
+      renderChart(newData)
+    },2000)
+    const renderChart=(data)=>{
+      myChart.current.setOption(createEchartsOptions({
         color: '#F7A110',
         xAxis: {
           type: 'category',
@@ -29,9 +36,9 @@ export const Chart9 = () => {
         series: [{
           type: 'line',
           data: [
-            0.19, 0.20, 0.26,
-            0.35, 0.26, 0.20,
-            0.08, 0.06
+            data[0], 0.20, 0.26,
+            data[1], 0.26, 0.20,
+            data[2], 0.06
           ],
           symbol: 'circle',
           symbolSize: px(12),
@@ -47,6 +54,8 @@ export const Chart9 = () => {
           }
         }]
       }));
+    }
+    renderChart([0.19,0.35,0.08])
   }, []);
 
   return (

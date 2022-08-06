@@ -2,44 +2,58 @@ import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
 import {createEchartsOptions} from '../shared/create-echarts-options';
 import {px} from '../shared/px';
+import { randomGenerator } from './getRandom'; 
 
 export const Chart8 = () => {
   const divRef = useRef(null);
+  const myChart =useRef(null)
   const colors = ['#856BED', '#F46064', '#F38E1C', '#1CDB7C', '#33A4FA'];
   useEffect(() => {
-    var myChart = echarts.init(divRef.current);
-    myChart.setOption(createEchartsOptions({
-      color: colors,
-      xAxis: {show: false},
-      yAxis: {show: false},
-      legend: {show: false},
-      series: [
-        {
-          name: '访问来源',
-          type: 'pie',
-          radius: ['75%', '90%'],
-          avoidLabelOverlap: false,
-          label: {
-            show: true, position: 'inside', textStyle: {color: 'white', fontSize: px(20)},
-            formatter(options) {
-              return (options.value * 100).toFixed(0) + '%';
-            }
-          },
-          labelLine: {show: false},
-          itemStyle: {
-            borderColor: '#0F113A',
-            borderWidth: px(4)
-          },
-          data: [
-            {value: 0.07, name: '10-20'},
-            {value: 0.10, name: '20-30'},
-            {value: 0.23, name: '30-40'},
-            {value: 0.28, name: '40-50'},
-            {value: 0.32, name: '50-60'},
-          ]
-        }
-      ]
-    }));
+    myChart.current = echarts.init(divRef.current);
+    setInterval(()=>{
+      const n1 = Math.ceil(randomGenerator.getSingle(0,1))/10
+      const n2 = Math.ceil(randomGenerator.getSingle(0,2))/10
+      const n3 = Math.ceil(randomGenerator.getSingle(0,3))/10
+      const n4 = Math.ceil(randomGenerator.getSingle(0,4))/10
+      const n5 =1-n1-n2-n3-n4
+      const newData = [n1,n2,n3,n4,n5]
+      renderChart(newData)
+    },2000)
+    const renderChart=(data)=>{
+      myChart.current.setOption(createEchartsOptions({
+        color: colors,
+        xAxis: {show: false},
+        yAxis: {show: false},
+        legend: {show: false},
+        series: [
+          {
+            name: '访问来源',
+            type: 'pie',
+            radius: ['75%', '90%'],
+            avoidLabelOverlap: false,
+            label: {
+              show: true, position: 'inside', textStyle: {color: 'white', fontSize: px(20)},
+              formatter(options) {
+                return (options.value * 100).toFixed(0) + '%';
+              }
+            },
+            labelLine: {show: false},
+            itemStyle: {
+              borderColor: '#0F113A',
+              borderWidth: px(4)
+            },
+            data: [
+              {value: data[0], name: '10-20'},
+              {value: data[1], name: '20-30'},
+              {value: data[2], name: '30-40'},
+              {value: data[3], name: '40-50'},
+              {value: data[4], name: '50-60'},
+            ]
+          }
+        ]
+      }));
+    }
+    renderChart([0.07,0.10,0.23,0.28,0.32])
   }, []);
 
   return (
